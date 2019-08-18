@@ -1,11 +1,10 @@
 import React, {useContext} from 'react';
 import styled from 'styled-components';
 import {FixtureContext} from '../../Contexts/fixture-context';
+import {HeaderProgressBar} from './HeaderProgressBar';
 
 const Wrapper = styled.header`
-  border-bottom: 2px #fff solid;
   margin-bottom: 1rem;
-  padding-bottom: 1rem;
 `;
 
 const StyledH1 = styled.header`
@@ -38,11 +37,12 @@ export const Header = () => {
   const {reload, lastCheck, isUpdating, fetchStatus} = useContext(FixtureContext);
 
   return (<Wrapper>
-    <StyledH1>Kommande matcher <Spinner className={isUpdating ? 'updating' : ''} onClick={reload}>⟲</Spinner></StyledH1>
+    <StyledH1>Malmös matcher <Spinner className={isUpdating ? 'updating' : ''} onClick={reload}>⟲</Spinner></StyledH1>
     <SmallParagraph>
       Senast uppdaterad:
       {isUpdating && `Hämtar data (${fetchStatus}%)`}
       {!isUpdating && lastCheck}
     </SmallParagraph>
+    <HeaderProgressBar/>
   </Wrapper>);
 };
