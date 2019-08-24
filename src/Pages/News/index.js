@@ -1,11 +1,11 @@
 import React, {useContext} from 'react';
 import {NewsContext} from '../../Contexts/news-context';
+import NewsList from '../../Components/NewsList';
 
 const News = () => {
   const {news} = useContext(NewsContext);
-  console.log({news});
   return <div className='news'>
-    Nyheter
+    <NewsList news={news}/>
   </div>;
 };
 

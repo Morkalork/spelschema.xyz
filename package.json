@@ -15,10 +15,16 @@
     "react-dom": "^16.9.0",
     "react-router-dom": "^5.0.1",
     "react-scripts": "3.1.1",
+    "react-slidedown": "^2.4.4",
     "react-swipeable-routes": "^0.6.0",
     "request": "^2.88.0",
     "request-promise": "^4.2.4",
     "rss-parser": "^3.7.2"
+  },
+  "nodemonConfig": {
+    "ignore": [
+      "src/*"
+    ]
   },
   "scripts": {
     "start": "node ./server",

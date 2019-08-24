@@ -9,20 +9,14 @@ app.use(cors());
 app.use(express.static(path.join(__dirname, '/../build')));
 app.use('/static', express.static(path.join(__dirname, '/../build')));
 
-app.get('*', function (req, res) {
-  res.sendFile(path.join(__dirname, '/../build/index.html'));
+app.get('/api/news', (req, res) => {
+  getNews()
+    .then((headlines) => res.send(JSON.stringify(headlines)))
+    .catch(() => res.send(JSON.stringify([])));
 });
 
-app.get('/api/news', (req, res) => {
-  console.log('NEWS!');
-  Promise.all([
-    getNews.expressen(),
-    getNews.skanesport(),
-    getNews.himmelriket()
-  ]).then(([expressen, skanesport, himmelriket]) => {
-    const total = {expressen, skanesport, himmelriket};
-    res.send(JSON.stringify(total));
-  });
+app.get('*', function (req, res) {
+  res.sendFile(path.join(__dirname, '/../build/index.html'));
 });
 
 app.listen(port, function () {
