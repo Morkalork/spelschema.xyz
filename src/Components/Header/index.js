@@ -10,9 +10,11 @@ const Wrapper = styled.header`
 const StyledH1 = styled.header`
   font-size: 1.75rem;
   text-transform: uppercase;
+  display: flex;
+  justify-content: space-between;
 `;
 
-const Spinner = styled.span`
+const Spinner = styled.p`
   @keyframes spinner {
     0% {
       transform: rotate(0deg);
@@ -37,7 +39,8 @@ export const Header = () => {
   const {reload, lastCheck, isUpdating, fetchStatus} = useContext(FixtureContext);
 
   return (<Wrapper>
-    <StyledH1>Malmös matcher <Spinner className={isUpdating ? 'updating' : ''} onClick={reload}>⟲</Spinner></StyledH1>
+    <StyledH1><p>Malmös matcher</p> <Spinner className={isUpdating ? 'updating' : ''}
+                                             onClick={reload}>⟲</Spinner></StyledH1>
     <SmallParagraph>
       Senast uppdaterad:
       {isUpdating && `Hämtar data (${fetchStatus}%)`}
