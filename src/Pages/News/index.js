@@ -3,7 +3,7 @@ import {NewsContext} from '../../Contexts/news-context';
 
 const News = () => {
   const {news} = useContext(NewsContext);
-  console.log(news);
+  console.log({news});
   return <div className='news'>
     Nyheter
   </div>;

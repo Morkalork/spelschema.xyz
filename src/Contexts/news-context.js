@@ -1,21 +1,11 @@
 import React from 'react';
-import RssParser from 'rss-parser';
 
-const loadExpressen = () => {
+const loadNews = () => {
   return new Promise((resolve, reject) => {
-    const url = "https://www.svenskafans.com/rss/team/92";
-    const parser = new RssParser();
-    parser.parseURL(`https://api.rss2json.com/v1/api.json?rss_url=${url}`).then((data) => {
-      console.log({data});
-    });
-  });
-};
-
-const loadNews = async monthsAhead => {
-  Promise.all([
-    loadExpressen()
-  ]).then(([expressen]) => {
-    console.log({expressen});
+    const url = "/api/news";
+    fetch(url).then(response => response.json())
+      .then(resolve)
+      .catch(reject);
   });
 };
 
@@ -39,7 +29,7 @@ export class NewsProvider extends React.Component {
     const news = await loadNews();
     this.setState({
       news: news || []
-    })
+    });
   }
 
   componentDidMount() {
