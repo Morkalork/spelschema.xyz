@@ -18,7 +18,7 @@ const expressen = () => {
           });
         });
 
-        resolve(headlines);
+        resolve({title: 'expressen', headlines});
       })
       .catch(reject);
   });

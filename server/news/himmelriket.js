@@ -17,7 +17,7 @@ const himmelriket = () => {
           });
         });
 
-        resolve(headlines);
+        resolve({title: 'himmelriket', headlines});
       })
       .catch(reject);
   });

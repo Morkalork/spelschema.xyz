@@ -1,6 +1,7 @@
 const expressen = require('./news/expressen');
 const skanesport = require('./news/skanesport');
 const himmelriket = require('./news/himmelriket');
+const aftonbladet = require('./news/aftonbladet');
 
 let lastCheck = new Date();
 let data = [];
@@ -9,19 +10,21 @@ const getNews = () => {
   return new Promise((resolve, reject) => {
     const now = new Date();
     const timeDiff = Math.round((now - lastCheck) / 1000);
-    console.log({timeDiff});
     const timeToUpdate = timeDiff > 3600;
 
     if (data.length === 0 || timeToUpdate) {
-      console.log('UPDATING!');
       Promise.all([
         expressen(),
         skanesport(),
-        himmelriket()
+        himmelriket(),
+        aftonbladet()
       ])
-        .then(([expressen, skanesport, himmelriket]) => {
+        .then((result) => {
           lastCheck = now;
-          data = {expressen, skanesport, himmelriket};
+          data = result.reduce((acc, val) => {
+            acc[val.title] = val.headlines;
+            return acc;
+          }, {});
           resolve(data);
         })
         .catch(reject);

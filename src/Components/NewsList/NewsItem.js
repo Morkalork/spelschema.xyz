@@ -23,7 +23,7 @@ const Wrapper = styled.div`
 const NewsItem = ({newsItem}) => <Wrapper>
   <a href={newsItem.fullUrl}>
     <header>
-      <h3>{newsItem.headline} ↪</h3>
+      <h3>{newsItem.headline}</h3>
     </header>
     <section>
       <p><em>{newsItem.date}</em></p>

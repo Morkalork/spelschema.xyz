@@ -8,7 +8,8 @@ const NewsList = ({news}) => {
 
   return <div className='news-list'>
     <NewsSection items={news.expressen} publicationName='Expressen'/>
-    <NewsSection items={news.skanesport} publicationName='Skånesporten'/>
+    <NewsSection items={news.aftonbladet} publicationName='Aftonbladet'/>
+    <NewsSection items={news.skanesporten} publicationName='Skånesporten'/>
     <NewsSection items={news.himmelriket} publicationName='Himmelriket'/>
   </div>;
 };

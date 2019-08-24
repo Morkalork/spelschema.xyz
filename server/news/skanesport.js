@@ -17,7 +17,7 @@ const skanesport = () => {
           });
         });
 
-        resolve(headlines);
+        resolve({title: 'skanesporten', headlines});
       })
       .catch(reject);
   });
