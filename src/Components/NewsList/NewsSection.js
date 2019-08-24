@@ -37,9 +37,9 @@ const NewsSection = ({publicationName, items}) => {
   const onToggleClick = () => setIsClosed(!isClosed);
 
   return <Wrapper className={isClosed ? 'closed' : ''}>
-    <header>
+    <header onClick={onToggleClick}>
       <h2>{publicationName}</h2>
-      <p onClick={onToggleClick}>&gt;</p>
+      <p>&gt;</p>
     </header>
     <SlideDown closed={isClosed} className='news-section-content'>
       {items.map((newsItem, index) => <NewsItem key={index} newsItem={newsItem}/>)}
