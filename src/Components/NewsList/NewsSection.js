@@ -42,7 +42,7 @@ const NewsSection = ({publicationName, items}) => {
       <p>&gt;</p>
     </header>
     <SlideDown closed={isClosed} className='news-section-content'>
-      {items.map((newsItem, index) => <NewsItem key={index} newsItem={newsItem}/>)}
+      {items.map((newsItem, index) => <NewsItem key={index} newsItem={newsItem} publicationName={publicationName}/>)}
     </SlideDown>
   </Wrapper>;
 };

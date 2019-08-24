@@ -1,5 +1,6 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import styled from 'styled-components';
+import {NewsContext} from '../../Contexts/news-context';
 
 const Wrapper = styled.div`
   margin-bottom: 1rem;
@@ -9,6 +10,9 @@ const Wrapper = styled.div`
     
     h3 {
       font-size: 0.85rem;
+      span {
+        display: none;
+      }
     }
     
     section {
@@ -17,18 +21,32 @@ const Wrapper = styled.div`
         font-style: italic;
       }
     }
+    
+    &.isRead {
+      h3 {
+        color: #666;
+        span {
+          display: inline;
+        }
+      }
+    }
   }
 `;
 
-const NewsItem = ({newsItem}) => <Wrapper>
-  <a href={newsItem.fullUrl}>
-    <header>
-      <h3>{newsItem.headline}</h3>
-    </header>
-    <section>
-      <p><em>{newsItem.date}</em></p>
-    </section>
-  </a>
-</Wrapper>;
+const NewsItem = ({newsItem, publicationName}) => {
+  const {setReadNews, readNews} = useContext(NewsContext);
+  const onClickLink = () => setReadNews(newsItem.headline, publicationName);
+  const isRead = readNews.find((item) => item.publicationName === publicationName && item.headline === newsItem.headline);
+  return <Wrapper>
+    <a href={newsItem.fullUrl} onClick={onClickLink} className={isRead ? 'isRead' : ''}>
+      <header>
+        <h3>{newsItem.headline} <span>(läst 👁)</span></h3>
+      </header>
+      <section>
+        <p><em>{newsItem.date}</em></p>
+      </section>
+    </a>
+  </Wrapper>;
+};
 
 export default NewsItem;
