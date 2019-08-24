@@ -3,8 +3,15 @@ const getNews = require('./getNews');
 const port = process.env.PORT || 3000;
 const app = express();
 
+app.use(express.static(__dirname + '/../build'));
+app.use('/static', express.static(__dirname + '/../build'));
+
 app.get('/', function (req, res) {
-  res.send(JSON.stringify({msg: 'Sundets pärla blir smutsigare för varje dag...'}));
+  res.sendFile(__dirname + '/../build/index.html');
+});
+
+app.get('/static', function (req, res) {
+  res.sendFile(__dirname + '/../build/index.html');
 });
 
 app.get('/news', (req, res) => {
