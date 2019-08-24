@@ -1,6 +1,7 @@
 const path = require('path');
 const express = require('express');
 const getNews = require('./getNews');
+const getFixtures = require('./getFixtures');
 const port = process.env.PORT || 8080;
 const cors = require('cors');
 const app = express();
@@ -12,6 +13,12 @@ app.use('/static', express.static(path.join(__dirname, '/../build')));
 app.get('/api/news', (req, res) => {
   getNews()
     .then((headlines) => res.send(JSON.stringify(headlines)))
+    .catch(() => res.send(JSON.stringify([])));
+});
+
+app.get('/api/fixtures/:monthsAhead', (req, res) => {
+  getFixtures(parseInt(req.params.monthsAhead))
+    .then((data) => res.send(JSON.stringify(data)))
     .catch(() => res.send(JSON.stringify([])));
 });
 
