@@ -22,7 +22,6 @@ const loadFixtures = async monthsAhead => {
     return null;
   }
 
-  console.log(data);
   return data
     .filter(d => !d.meta['match-is-played'])
     .map(d => ({

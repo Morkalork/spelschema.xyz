@@ -9,7 +9,6 @@ const List = styled.div`
 
 export const FixtureList = () => {
   const {fixtures, hasErrors} = useContext(FixtureContext);
-  console.log({fixtures});
   return <List>
     {fixtures.map(f => <FixtureItem key={f.id}
                                     date={f.date}
