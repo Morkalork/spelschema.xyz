@@ -9,10 +9,10 @@ const fotbollskanalen = () => {
         $('.tabs .latest-news--long .news-list .news-list__item').each((i, item) => {
           const linkUrl = $(item).find(' > a').attr('href');
           const fullUrl = `https://www.fotbollskanalen.se${linkUrl}`;
-          const headline = $(item).find('.news-list__item-text-headline').text();
-          const articleType = $(item).find('.news-list__item-text-section').text();
+          const headline = $(item).find('.news-list__item-text-headline').text().trim();
+          const articleType = $(item).find('.news-list__item-text-section').text().trim();
           headlines.push({
-            headline: `${articleType.toLowerCase() === 'allsvenskan' ? '' : `[${[articleType]}]`} ${headline}`,
+            headline: `[${articleType}] ${headline}`,
             fullUrl
           });
         });

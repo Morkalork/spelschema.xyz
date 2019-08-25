@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import {FixtureProvider} from '../../Contexts/fixture-context';
 import {FixtureList} from '../../Components/FixtureList';
-import {Header} from '../../Components/Header';
+import Header from '../../Components/Header';
 import {BrowserRouter as Router, Route} from 'react-router-dom';
 import News from '../News';
 import SwipeableRoutes from "react-swipeable-routes";
@@ -49,6 +49,12 @@ const Wrapper = styled.div`
   > div {
     flex: 1
   }
+  
+  .react-swipeable-view-container {
+    > div {
+      overflow-x: hidden !important; // This is what you get for using 3rd party plugins...
+    }
+  }
 `;
 
 function App() {
@@ -60,8 +66,8 @@ function App() {
       </div>
       <FixtureProvider>
         <NewsProvider>
-          <Header/>
           <Router>
+            <Header/>
             <SwipeableRoutes>
               <Route path='/' exact component={FixtureList}/>
               <Route path='/news' component={News}/>

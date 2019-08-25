@@ -2,6 +2,9 @@ import React, {useContext} from 'react';
 import styled from 'styled-components';
 import {FixtureContext} from '../../Contexts/fixture-context';
 import {HeaderProgressBar} from './HeaderProgressBar';
+import {withRouter} from 'react-router-dom';
+import {NewsContext} from '../../Contexts/news-context';
+import moment from 'moment';
 
 const Wrapper = styled.header`
   margin-bottom: 1rem;
@@ -35,17 +38,19 @@ const SmallParagraph = styled.p`
   opacity: 0.7;
 `;
 
-export const Header = () => {
-  const {reload, lastCheck, isUpdating, fetchStatus} = useContext(FixtureContext);
+const Header = ({location: {pathname}}) => {
+  const {reload, lastCheck, isUpdating} = useContext(pathname === '/news' ? NewsContext : FixtureContext);
 
   return (<Wrapper>
     <StyledH1><p>Malmös matcher</p> <Spinner className={isUpdating ? 'updating' : ''}
                                              onClick={reload}>⟲</Spinner></StyledH1>
     <SmallParagraph>
       Senast uppdaterad:
-      {isUpdating && `Hämtar data (${fetchStatus}%)`}
-      {!isUpdating && lastCheck}
+      {isUpdating && `Hämtar data...`}
+      {!isUpdating && moment(lastCheck).format("YYYY-MM-DD HH:mm:ss")}
     </SmallParagraph>
     <HeaderProgressBar/>
   </Wrapper>);
 };
+
+export default withRouter(Header);

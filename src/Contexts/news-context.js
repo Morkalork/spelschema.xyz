@@ -13,7 +13,7 @@ const loadNewsFromServer = () => {
   });
 };
 
-const loadNews = async () => {
+const shouldReload = () => {
   const now = Date.now();
   const storedLastCheck = localStorage.getItem(NEWS_LAST_CHECK);
   const lastCheck = storedLastCheck ? parseInt(storedLastCheck) : 0;
@@ -21,14 +21,19 @@ const loadNews = async () => {
   const timeToUpdate = timeDiff > 3600;
   const storedNews = localStorage.getItem(NEWS_KEY) || '[]';
   let news = JSON.parse(storedNews);
-  const doUpdate = !lastCheck || news.length === 0 || timeToUpdate;
-  if (doUpdate) {
+  const shouldUpdate = !lastCheck || news.length === 0 || timeToUpdate;
+  return {shouldUpdate, news, now};
+};
+
+const loadNews = async () => {
+  let {shouldUpdate, news, now} = shouldReload();
+  if (shouldUpdate) {
     news = await loadNewsFromServer();
     localStorage.setItem(NEWS_KEY, JSON.stringify(news));
     localStorage.setItem(NEWS_LAST_CHECK, now);
   }
 
-  return news;
+  return {news, lastCheck: now};
 };
 
 export const NewsContext = React.createContext();
@@ -46,6 +51,8 @@ export class NewsProvider extends React.Component {
         this.doReload();
       },
       readNews,
+      isUpdating: false,
+      lastCheck: new Date(),
       setReadNews: (headline, publicationName) => {
         const readNews = [...this.state.readNews, {headline, publicationName}];
         this.setState({readNews});
@@ -55,14 +62,26 @@ export class NewsProvider extends React.Component {
   }
 
   async doReload() {
-    const news = await loadNews();
+    localStorage.removeItem(NEWS_LAST_CHECK);
+    this.setState({isUpdating: true});
+    const {news, lastCheck} = await loadNews();
     this.setState({
-      news: news || []
+      isUpdating: false,
+      news: news || [],
+      lastCheck
     });
   }
 
   componentDidMount() {
-    this.doReload();
+    let {shouldUpdate, news, now} = shouldReload();
+    if (shouldUpdate) {
+      this.doReload();
+    } else {
+      this.setState({
+        news,
+        lastCheck: now
+      });
+    }
   }
 
   render() {

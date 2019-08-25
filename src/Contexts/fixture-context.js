@@ -18,7 +18,7 @@ export class FixtureProvider extends React.Component {
 
     this.state = {
       fixtures: [],
-      lastCheck: '',
+      lastCheck: Date.now(),
       isUpdating: false,
       hasError: false,
       fetchStatus: 0,
@@ -33,7 +33,7 @@ export class FixtureProvider extends React.Component {
     const fixtures = await loadFixtures();
     const hasErrors = fixtures === null;
     this.setState({
-      lastCheck: moment().format("YYYY-MM-DD HH:mm:ss"),
+      lastCheck: Date.now(),
       hasErrors,
       fixtures: hasErrors ? [] : fixtures.reduce((arr, data) => {
         if (!arr.find(a => a.id === data.id)) {
