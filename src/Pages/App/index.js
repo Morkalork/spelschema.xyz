@@ -61,7 +61,7 @@ function App() {
   return (
     <Wrapper>
       <div className='flesktop'>
-        <p>Denna sida är mobilanpassad farfar...</p>
+        <p>Denna sida är mobilanpassad, farfar...</p>
         <p>●</p>
       </div>
       <FixtureProvider>
