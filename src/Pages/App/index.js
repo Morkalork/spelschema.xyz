@@ -7,6 +7,7 @@ import {BrowserRouter as Router, Route} from 'react-router-dom';
 import News from '../News';
 import SwipeableRoutes from "react-swipeable-routes";
 import {NewsProvider} from '../../Contexts/news-context';
+import Navigation from '../../Components/Navigation';
 
 const Wrapper = styled.div`
   min-height: 100%;
@@ -72,6 +73,7 @@ function App() {
               <Route path='/' exact component={FixtureList}/>
               <Route path='/news' component={News}/>
             </SwipeableRoutes>
+            <Navigation/>
           </Router>
         </NewsProvider>
       </FixtureProvider>

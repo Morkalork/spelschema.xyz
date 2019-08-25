@@ -1,5 +1,4 @@
 import React from 'react';
-import moment from 'moment';
 
 const loadFixtures = async () => {
   return new Promise((resolve, reject) => {

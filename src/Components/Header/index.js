@@ -39,11 +39,14 @@ const SmallParagraph = styled.p`
 `;
 
 const Header = ({location: {pathname}}) => {
-  const {reload, lastCheck, isUpdating} = useContext(pathname === '/news' ? NewsContext : FixtureContext);
+  const isNews = pathname === '/news';
+  console.log({pathname});
+  const {reload, lastCheck, isUpdating} = useContext(isNews ? NewsContext : FixtureContext);
+  const headerText = isNews ? 'Malmö i media' : 'Malmös matcher';
 
   return (<Wrapper>
-    <StyledH1><p>Malmös matcher</p> <Spinner className={isUpdating ? 'updating' : ''}
-                                             onClick={reload}>⟲</Spinner></StyledH1>
+    <StyledH1><p>{headerText}</p> <Spinner className={isUpdating ? 'updating' : ''}
+                                           onClick={reload}>⟲</Spinner></StyledH1>
     <SmallParagraph>
       Senast uppdaterad:
       {isUpdating && `Hämtar data...`}
