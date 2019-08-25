@@ -42,7 +42,7 @@ const FixtureItem = ({
 );
 
 FixtureItem.propTypes = {
-  date: PropTypes.object,
+  date: PropTypes.string,
   gameTypes: PropTypes.string,
   isHomeGame: PropTypes.bool,
   link: PropTypes.string,

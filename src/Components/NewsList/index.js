@@ -11,6 +11,7 @@ const NewsList = ({news}) => {
     <NewsSection items={news.aftonbladet} publicationName='Aftonbladet'/>
     <NewsSection items={news.skanesporten} publicationName='Skånesporten'/>
     <NewsSection items={news.himmelriket} publicationName='Himmelriket'/>
+    <NewsSection items={news.fotbollskanalen} publicationName='Fotbollskanalen'/>
   </div>;
 };
 
