@@ -52,7 +52,7 @@ export class NewsProvider extends React.Component {
       },
       readNews,
       isUpdating: false,
-      lastCheck: new Date(),
+      lastCheck: Date.now(),
       setReadNews: (headline, publicationName) => {
         const readNews = [...this.state.readNews, {headline, publicationName}];
         this.setState({readNews});

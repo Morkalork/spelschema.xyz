@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import moment from 'moment';
+import updateTitle from '../../helpers/update-title';
 
 const Wrapper = styled.header`
   margin-bottom: 1rem;
@@ -39,10 +40,10 @@ const SmallParagraph = styled.p`
 
 const BaseHeader = ({headerText, isUpdating, reload, lastCheck}) => {
   const title = `Malmö FF ** ${headerText}`;
-  document.title = title;
+  updateTitle(title);
   return (<Wrapper>
     <StyledH1><p>{title}</p> <Spinner className={isUpdating ? 'updating' : ''}
-                                                      onClick={reload}>⟲</Spinner></StyledH1>
+                                      onClick={reload}>⟲</Spinner></StyledH1>
     <SmallParagraph>
       Senast uppdaterad:
       {isUpdating && `Hämtar data...`}

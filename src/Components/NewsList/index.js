@@ -7,7 +7,7 @@ const NewsList = ({news}) => {
   }
 
   return <div className='news-list'>
-    {Object.keys(news).map((newspaper) => <NewsSection items={news[newspaper]} publicationName={newspaper}/>)}
+    {Object.keys(news).map((newspaper) => <NewsSection key={newspaper} items={news[newspaper]} publicationName={newspaper}/>)}
   </div>;
 };
 
