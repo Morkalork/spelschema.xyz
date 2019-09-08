@@ -8,6 +8,8 @@ import News from '../News';
 import SwipeableRoutes from "react-swipeable-routes";
 import {NewsProvider} from '../../Contexts/news-context';
 import Navigation from '../../Components/Navigation';
+import {TableProvider} from '../../Contexts/table-context';
+import Table from '../Table';
 
 const Wrapper = styled.div`
   min-height: 100%;
@@ -67,14 +69,17 @@ function App() {
       </div>
       <FixtureProvider>
         <NewsProvider>
-          <Router>
-            <Header/>
-            <SwipeableRoutes>
-              <Route path='/' exact component={FixtureList}/>
-              <Route path='/news' component={News}/>
-            </SwipeableRoutes>
-            <Navigation/>
-          </Router>
+          <TableProvider>
+            <Router>
+              <Header/>
+              <SwipeableRoutes>
+                <Route path='/' exact component={FixtureList}/>
+                <Route path='/news' component={News}/>
+                <Route path='/table' component={Table}/>
+              </SwipeableRoutes>
+              <Navigation/>
+            </Router>
+          </TableProvider>
         </NewsProvider>
       </FixtureProvider>
     </Wrapper>

@@ -6,6 +6,13 @@ const Wrapper = styled.nav`
   position: fixed;
   bottom: 1rem;
   right: 1rem;
+  display: flex;
+  
+  > div {
+    &:first-child {
+      margin-right: 0.25rem;
+    }
+  }
 `;
 
 const Arrow = styled.div`
@@ -15,14 +22,21 @@ const Arrow = styled.div`
   border-radius: 50%;
   background-color: #FFF;
   color: #A7D7FF;
+  text-shadow: none;
+  opacity: 0.8;
 `;
 
 const getPrevNext = (pathname) => {
   if (pathname === '/news') {
     return {
       prev: '/',
-      next: null
+      next: '/table'
     };
+  } else if (pathname === '/table') {
+    return {
+      prev: '/news',
+      next: null
+    }
   }
 
   return {

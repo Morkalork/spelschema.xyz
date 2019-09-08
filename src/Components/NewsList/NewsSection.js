@@ -26,7 +26,7 @@ const Wrapper = styled.div`
   
   .news-section-content {
     overflow: hidden;
-    transition: 1s;
+    transition: .5s;
     border-bottom: 2px rgba(255, 255, 255, 0.2) solid;
     margin-bottom: 1rem;
   }
@@ -42,7 +42,7 @@ const NewsSection = ({publicationName, items}) => {
       <p>&gt;</p>
     </header>
     <SlideDown closed={isClosed} className='news-section-content'>
-      {items.map((newsItem, index) => <NewsItem key={index} newsItem={newsItem} publicationName={publicationName}/>)}
+      {items && items.map((newsItem, index) => <NewsItem key={index} newsItem={newsItem} publicationName={publicationName}/>)}
     </SlideDown>
   </Wrapper>;
 };
