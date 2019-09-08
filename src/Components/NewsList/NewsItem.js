@@ -5,7 +5,7 @@ import {NewsContext} from '../../Contexts/news-context';
 const Wrapper = styled.div`
   margin-bottom: 1rem;
   a {
-    color: black;
+    color: #fff;
     text-decoration: none;
     
     h3 {
@@ -24,7 +24,7 @@ const Wrapper = styled.div`
     
     &.isRead {
       h3 {
-        color: #666;
+        opacity: 0.5;
         span {
           display: inline;
         }
@@ -40,7 +40,7 @@ const NewsItem = ({newsItem, publicationName}) => {
   return <Wrapper>
     <a href={newsItem.fullUrl} rel='noopener noreferrer' onClick={onClickLink} className={isRead ? 'isRead' : ''} target='_blank'>
       <header>
-        <h3>{newsItem.headline} <span>(läst 👁)</span></h3>
+        <h3>{newsItem.headline} <span>(läst)</span></h3>
       </header>
       <section>
         <p><em>{newsItem.date}</em></p>
