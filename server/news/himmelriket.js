@@ -1,4 +1,4 @@
-const parser = require('./parser');
+const parser = require('../parser');
 
 const himmelriket = () => {
   return new Promise((resolve, reject) => {

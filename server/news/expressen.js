@@ -1,4 +1,4 @@
-const parser = require('./parser');
+const parser = require('../parser');
 
 const expressen = () => {
   return new Promise((resolve, reject) => {
