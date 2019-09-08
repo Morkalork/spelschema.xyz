@@ -6,7 +6,7 @@ let data = [];
 const getFixtures = async (monthsAhead = 6) => {
   const now = new Date();
   const timeDiff = Math.round((now - lastCheck) / 1000);
-  const timeToUpdate = timeDiff > 3600;
+  const timeToUpdate = timeDiff > 43200; // 12 hours
 
   if (data.length === 0 || timeToUpdate) {
     for (let i = 0; i < monthsAhead; i++) {

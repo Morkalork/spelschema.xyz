@@ -40,7 +40,6 @@ const SmallParagraph = styled.p`
 
 const Header = ({location: {pathname}}) => {
   const isNews = pathname === '/news';
-  console.log({pathname});
   const {reload, lastCheck, isUpdating} = useContext(isNews ? NewsContext : FixtureContext);
   const headerText = isNews ? 'Malmö i media' : 'Malmös matcher';
 

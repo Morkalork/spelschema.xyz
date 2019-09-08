@@ -4,7 +4,6 @@ const himmelriket = require('./news/himmelriket');
 const aftonbladet = require('./news/aftonbladet');
 const fotbollskanalen = require('./news/fotbollskanalen');
 const fotbolldirekt = require('./news/fotbolldirekt');
-const nyheter24 = require('./news/nyheter24');
 
 let lastCheck = new Date();
 let data = [];
@@ -23,8 +22,7 @@ const getNews = () => {
         himmelriket(),
         aftonbladet(),
         fotbollskanalen(),
-        fotbolldirekt(),
-        nyheter24()
+        fotbolldirekt()
       ])
         .then((result) => {
           lastCheck = now;

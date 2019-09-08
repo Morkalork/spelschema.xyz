@@ -38,7 +38,7 @@ const NewsItem = ({newsItem, publicationName}) => {
   const onClickLink = () => setReadNews(newsItem.headline, publicationName);
   const isRead = readNews.find((item) => item.publicationName === publicationName && item.headline === newsItem.headline);
   return <Wrapper>
-    <a href={newsItem.fullUrl} onClick={onClickLink} className={isRead ? 'isRead' : ''} target='_blank'>
+    <a href={newsItem.fullUrl} rel='noopener noreferrer' onClick={onClickLink} className={isRead ? 'isRead' : ''} target='_blank'>
       <header>
         <h3>{newsItem.headline} <span>(läst 👁)</span></h3>
       </header>
