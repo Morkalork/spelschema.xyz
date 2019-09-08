@@ -60,7 +60,17 @@ const Wrapper = styled.div`
   }
 `;
 
-function App() {
+const App = () => {
+  const scrollToTop = index => {
+    window.scrollTo({
+      top: 0,
+      left: 0,
+      behavior: 'smooth'
+    });
+
+    return true;
+  };
+
   return (
     <Wrapper>
       <div className='flesktop'>
@@ -72,7 +82,7 @@ function App() {
           <TableProvider>
             <Router>
               <Header/>
-              <SwipeableRoutes>
+              <SwipeableRoutes onChangeIndex={scrollToTop}>
                 <Route path='/' exact component={FixtureList}/>
                 <Route path='/news' component={News}/>
                 <Route path='/table' component={Table}/>
@@ -84,6 +94,6 @@ function App() {
       </FixtureProvider>
     </Wrapper>
   );
-}
+};
 
 export default App;
