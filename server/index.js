@@ -10,6 +10,7 @@ const app = express();
 app.use(cors());
 app.use(express.static(path.join(__dirname, '/../build')));
 app.use('/static', express.static(path.join(__dirname, '/../build')));
+app.use(express.static('public'));
 
 app.get('/api/news', (req, res) => {
   getNews()
