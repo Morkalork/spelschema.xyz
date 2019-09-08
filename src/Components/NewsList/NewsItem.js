@@ -5,7 +5,7 @@ import {NewsContext} from '../../Contexts/news-context';
 const Wrapper = styled.div`
   margin-bottom: 1rem;
   a {
-    color: #fff;
+    color: #333;
     text-decoration: none;
     
     h3 {

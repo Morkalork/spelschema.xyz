@@ -1,11 +1,13 @@
 import React from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
-import {HeaderProgressBar} from './HeaderProgressBar';
 import moment from 'moment';
 
 const Wrapper = styled.header`
   margin-bottom: 1rem;
+  background-color: #A7D7FF;
+  padding: 1rem;
+  color: #fff;
 `;
 
 const StyledH1 = styled.header`
@@ -33,7 +35,6 @@ const Spinner = styled.p`
 
 const SmallParagraph = styled.p`
   font-size: 0.75rem;
-  opacity: 0.7;
 `;
 
 const BaseHeader = ({headerText, isUpdating, reload, lastCheck}) => {
@@ -45,7 +46,6 @@ const BaseHeader = ({headerText, isUpdating, reload, lastCheck}) => {
       {isUpdating && `Hämtar data...`}
       {!isUpdating && moment(lastCheck).format("YYYY-MM-DD HH:mm:ss")}
     </SmallParagraph>
-    <HeaderProgressBar/>
   </Wrapper>);
 };
 

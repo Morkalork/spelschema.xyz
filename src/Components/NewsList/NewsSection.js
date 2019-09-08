@@ -10,6 +10,10 @@ const Wrapper = styled.div`
     align-items: center;
     margin-bottom: 1rem;
     
+    h2 {
+      text-transform: capitalize;
+    }
+    
     p {
       transition: .5s;
       transform: rotate(270deg);

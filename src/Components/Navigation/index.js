@@ -20,8 +20,7 @@ const Arrow = styled.div`
   width: 2rem;
   text-align: center;
   border-radius: 50%;
-  background-color: #FFF;
-  color: #A7D7FF;
+  background-color: rgba(167,215,255, 0.25);
   text-shadow: none;
   opacity: 0.8;
 `;
@@ -36,7 +35,7 @@ const getPrevNext = (pathname) => {
     return {
       prev: '/news',
       next: null
-    }
+    };
   }
 
   return {

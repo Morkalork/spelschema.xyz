@@ -13,9 +13,6 @@ import Table from '../Table';
 
 const Wrapper = styled.div`
   min-height: 100%;
-  padding: 1rem;
-  color: #fff;
-  text-shadow: 0 0 0.25rem #bbb;
   display: flex;
   flex-direction: column;
   max-width: 768px;
@@ -56,6 +53,9 @@ const Wrapper = styled.div`
   .react-swipeable-view-container {
     > div {
       overflow-x: hidden !important; // This is what you get for using 3rd party plugins...
+      > div {
+        padding: 1rem;
+      }
     }
   }
 `;

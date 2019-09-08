@@ -7,13 +7,7 @@ const NewsList = ({news}) => {
   }
 
   return <div className='news-list'>
-    <NewsSection items={news.expressen} publicationName='Expressen'/>
-    <NewsSection items={news.aftonbladet} publicationName='Aftonbladet'/>
-    <NewsSection items={news.skanesporten} publicationName='Skånesporten'/>
-    <NewsSection items={news.himmelriket} publicationName='Himmelriket'/>
-    <NewsSection items={news.fotbollskanalen} publicationName='Fotbollskanalen'/>
-    <NewsSection items={news.fotbolldirekt} publicationName='Fotbolldirekt'/>
-    <NewsSection items={news.nyheter24} publicationName='Nyheter24'/>
+    {Object.keys(news).map((newspaper) => <NewsSection items={news[newspaper]} publicationName={newspaper}/>)}
   </div>;
 };
 
