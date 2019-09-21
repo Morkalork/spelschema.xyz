@@ -39,7 +39,7 @@ const SmallParagraph = styled.p`
 `;
 
 const BaseHeader = ({headerText, isUpdating, reload, lastCheck}) => {
-  const title = `Malmö FF ** ${headerText}`;
+  const title = `${headerText} ** Malmö FF`;
   updateTitle(title);
   return (<Wrapper>
     <StyledH1><p>{title}</p> <Spinner className={isUpdating ? 'updating' : ''}
