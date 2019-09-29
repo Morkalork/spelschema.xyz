@@ -34,6 +34,11 @@ const getPrevNext = (pathname) => {
   } else if (pathname === '/table') {
     return {
       prev: '/news',
+      next: '/twitter-feed'
+    };
+  } else if (pathname === '/twitter-feed') {
+    return {
+      prev: '/table',
       next: null
     };
   }

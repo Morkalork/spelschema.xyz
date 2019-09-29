@@ -22,3 +22,8 @@ export const TableHeader = () => {
   return <BaseHeader headerText={headerText} isUpdating={isUpdating} lastCheck={lastCheck} reload={reload}/>;
 };
 
+export const TwitterFeedHeader = () => {
+  const headerText = 'twitter feed';
+  return <BaseHeader headerText={headerText} isUpdating={false} lastCheck={0}/>;
+};
+

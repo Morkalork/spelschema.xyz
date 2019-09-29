@@ -10,6 +10,7 @@ import {NewsProvider} from '../../Contexts/news-context';
 import Navigation from '../../Components/Navigation';
 import {TableProvider} from '../../Contexts/table-context';
 import Table from '../Table';
+import TwitterFeed from '../TwitterFeed';
 
 const Wrapper = styled.div`
   min-height: 100%;
@@ -86,6 +87,7 @@ const App = () => {
                 <Route path='/' exact component={FixtureList}/>
                 <Route path='/news' component={News}/>
                 <Route path='/table' component={Table}/>
+                <Route path='/twitter-feed' component={TwitterFeed}/>
               </SwipeableRoutes>
               <Navigation/>
             </Router>
