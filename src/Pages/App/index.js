@@ -32,13 +32,13 @@ const Wrapper = styled.div`
     .flesktop {
       background-color: #000;
       height: 1rem;
-      margin: -1rem;
       margin-bottom: 3rem;
       flex: 0;
       padding: 1rem;
       display: flex;
       justify-content: space-between;
       align-items: center;
+      color: #fff;
       
       p:last-child {
         font-size: 2rem;
@@ -75,7 +75,7 @@ const App = () => {
   return (
     <Wrapper>
       <div className='flesktop'>
-        <p>Denna sida är mobilanpassad, farfar...</p>
+        <p>Denna sida är mobilanpassad, gamling...</p>
         <p>●</p>
       </div>
       <FixtureProvider>
