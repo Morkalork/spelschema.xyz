@@ -24,6 +24,10 @@ export const TableHeader = () => {
 
 export const TwitterFeedHeader = () => {
   const headerText = 'twitter feed';
-  return <BaseHeader headerText={headerText} lastCheck={0}/>;
+  return <BaseHeader headerText={headerText}/>;
 };
 
+export const PodcastsHeader = () => {
+  const headerText = 'Relevanta podcasts';
+  return <BaseHeader headerText={headerText} />
+}

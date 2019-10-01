@@ -26,35 +26,40 @@ const Arrow = styled.div`
 `;
 
 const getPrevNext = (pathname) => {
-  if (pathname === '/news') {
-    return {
-      prev: '/',
-      next: '/table'
-    };
-  } else if (pathname === '/table') {
-    return {
-      prev: '/news',
-      next: '/twitter-feed'
-    };
-  } else if (pathname === '/twitter-feed') {
-    return {
-      prev: '/table',
-      next: null
-    };
-  }
+    if (pathname === '/news') {
+        return {
+            prev: '/',
+            next: '/table'
+        };
+    } else if (pathname === '/table') {
+        return {
+            prev: '/news',
+            next: '/twitter-feed'
+        };
+    } else if (pathname === '/twitter-feed') {
+        return {
+            prev: '/table',
+            next: '/podcasts'
+        };
+    } else if (pathname === '/podcasts') {
+        return {
+            prev: 'twitter-feed',
+            next: null
+        };
+    }
 
-  return {
-    prev: null,
-    next: '/news'
-  };
+    return {
+        prev: null,
+        next: '/news'
+    };
 };
 
 const Navigation = ({history, location: {pathname}}) => {
-  const {prev, next} = getPrevNext(pathname);
-  return <Wrapper>
-    {prev && <Arrow onClick={() => history.push(prev)}>&lt;</Arrow>}
-    {next && <Arrow onClick={() => history.push(next)}>&gt;</Arrow>}
-  </Wrapper>;
+    const {prev, next} = getPrevNext(pathname);
+    return <Wrapper>
+        {prev && <Arrow onClick={() => history.push(prev)}>&lt;</Arrow>}
+        {next && <Arrow onClick={() => history.push(next)}>&gt;</Arrow>}
+    </Wrapper>;
 };
 
 export default withRouter(Navigation);
