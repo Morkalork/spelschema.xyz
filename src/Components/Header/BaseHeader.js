@@ -39,24 +39,24 @@ const SmallParagraph = styled.p`
 `;
 
 const BaseHeader = ({headerText, isUpdating, reload, lastCheck}) => {
-  const title = `${headerText} ** Malmö FF`;
-  updateTitle(title);
-  return (<Wrapper>
-    <StyledH1><p>{title}</p> <Spinner className={isUpdating ? 'updating' : ''}
-                                      onClick={reload}>⟲</Spinner></StyledH1>
-    <SmallParagraph>
-      Senast uppdaterad:
-      {isUpdating && `Hämtar data...`}
-      {!isUpdating && moment(lastCheck).format("YYYY-MM-DD HH:mm:ss")}
-    </SmallParagraph>
-  </Wrapper>);
+    const title = `${headerText} ** Malmö FF`;
+    updateTitle(title);
+    return (<Wrapper>
+        <StyledH1><p>{title}</p> {isUpdating !== undefined && <Spinner className={isUpdating ? 'updating' : ''}
+                                                                       onClick={reload}>⟲</Spinner>}</StyledH1>
+        <SmallParagraph>
+            Senast uppdaterad:
+            {isUpdating && `Hämtar data...`}
+            {!isUpdating && moment(lastCheck).format("YYYY-MM-DD HH:mm:ss")}
+        </SmallParagraph>
+    </Wrapper>);
 };
 
 BaseHeader.propTypes = {
-  headerText: PropTypes.string.isRequired,
-  isUpdating: PropTypes.bool,
-  reload: PropTypes.func,
-  lastCheck: PropTypes.number
+    headerText: PropTypes.string.isRequired,
+    isUpdating: PropTypes.bool,
+    reload: PropTypes.func,
+    lastCheck: PropTypes.number
 };
 
 export default BaseHeader;
