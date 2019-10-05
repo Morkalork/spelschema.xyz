@@ -30,12 +30,10 @@
     ]
   },
   "scripts": {
-    "start": "node ./server",
-    "start-dev": "nodemon ./server",
+    "server": "nodemon ./server",
+    "start": "react-scripts start",
     "build": "npm i && react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject",
-    "serve": "react-scripts start"
+    "test": "react-scripts test"
   },
   "eslintConfig": {
     "extends": "react-app"
