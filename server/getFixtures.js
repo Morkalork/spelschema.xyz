@@ -29,7 +29,7 @@ const getFixtures = async (monthsAhead = 6) => {
       }
 
       const mappedFixtures = fixtures
-        .filter(d => !d.meta['match-is-played'])
+        .filter(d => new Date(d.meta['match-date-time']) > new Date())
         .map(d => ({
           id: d.id,
           date: new Date(d.meta['match-date-time']),
