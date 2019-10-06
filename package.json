@@ -30,8 +30,9 @@
     ]
   },
   "scripts": {
+    "start": "node ./server",
     "server": "nodemon ./server",
-    "start": "react-scripts start",
+    "client": "react-scripts start",
     "build": "npm i && react-scripts build",
     "test": "react-scripts test"
   },

@@ -19,8 +19,8 @@ npm install
 To run it you need to start both a backend and a frontend server, run these two commands in two separate terminals:
 
 ```node
-npm run server      // Start the backend
-npm start          // Start the frontend
+npm run server      // Start the backend (in dev mode)
+npm run client      // Start the frontend (in dev mode)
 ```
 
 ## Fork, fix, push?
