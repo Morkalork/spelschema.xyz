@@ -1,5 +1,5 @@
 const expressen = require('./news/expressen');
-const skanesport = require('./news/skanesport');
+const fotbollSkane = require('./news/fotboll-skane');
 const himmelriket = require('./news/himmelriket');
 const aftonbladet = require('./news/aftonbladet');
 const fotbollskanalen = require('./news/fotbollskanalen');
@@ -18,7 +18,7 @@ const getNews = () => {
       console.log('Updating news cache at ' + new Date());
       Promise.all([
         expressen(),
-        skanesport(),
+        fotbollSkane(),
         himmelriket(),
         aftonbladet(),
         fotbollskanalen(),
