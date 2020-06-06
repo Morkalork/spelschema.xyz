@@ -30,7 +30,6 @@ const getFixtures = async (monthsAhead = 6) => {
 
       const mappedFixtures = fixtures
         .filter(d => {
-            console.log(d['opposing-team'], d.meta['match-date-time'], new Date(), new Date(d.meta['match-date-time']) > new Date());
             return new Date(d.meta['match-date-time']) > new Date();
         })
         .map(d => ({
@@ -44,8 +43,6 @@ const getFixtures = async (monthsAhead = 6) => {
           opponent: d['opposing-team'],
           gameType: d.type
         }));
-      console.log(new Date());
-      console.log(fixtures[0]['match-date-time']);
       data = [...data, ...mappedFixtures];
     }
   }
