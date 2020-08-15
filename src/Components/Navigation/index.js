@@ -1,65 +1,95 @@
 import React from 'react';
-import {withRouter} from 'react-router-dom';
+import { withRouter, Link } from 'react-router-dom';
 import styled from 'styled-components';
 
 const Wrapper = styled.nav`
   position: fixed;
-  bottom: 1rem;
-  right: 1rem;
+  bottom: 0;
+  right: 0;
+  left: 0;
   display: flex;
-  
-  > div {
-    &:first-child {
-      margin-right: 0.25rem;
+  max-width: 768px;
+  background-color: #000;
+
+  @media screen and (min-width: 769px) {
+    margin: 0 auto;
+  }
+
+  @media screen and (max-width: 768px) {
+    ul {
+      li {
+        i {
+          font-size: 2rem;
+        }
+      }
+    }
+  }
+
+  ul {
+    list-style-type: none;
+    display: flex;
+    justify-content: space-evenly;
+    width: 100%;
+    padding: 1rem 0;
+  }
+`;
+
+const StyledLink = styled(Link)`
+  i {
+    font-size: 4rem;
+    color: #fff;
+
+    &:hover {
+      color: #dadada;
+    }
+
+    &:active {
+      animation: spin 0.25s;
+    }
+  }
+
+  @keyframes spin {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
     }
   }
 `;
 
-const Arrow = styled.div`
-  font-size: 2rem;
-  width: 2rem;
-  text-align: center;
-  border-radius: 50%;
-  background-color: rgba(167,215,255, 0.25);
-  text-shadow: none;
-  opacity: 0.8;
-`;
-
-const getPrevNext = (pathname) => {
-    if (pathname === '/news') {
-        return {
-            prev: '/',
-            next: '/table'
-        };
-    } else if (pathname === '/table') {
-        return {
-            prev: '/news',
-            next: '/twitter-feed'
-        };
-    } else if (pathname === '/twitter-feed') {
-        return {
-            prev: '/table',
-            next: '/podcasts'
-        };
-    } else if (pathname === '/podcasts') {
-        return {
-            prev: 'twitter-feed',
-            next: null
-        };
-    }
-
-    return {
-        prev: null,
-        next: '/news'
-    };
-};
-
-const Navigation = ({history, location: {pathname}}) => {
-    const {prev, next} = getPrevNext(pathname);
-    return <Wrapper>
-        {prev && <Arrow onClick={() => history.push(prev)}>&lt;</Arrow>}
-        {next && <Arrow onClick={() => history.push(next)}>&gt;</Arrow>}
-    </Wrapper>;
+const Navigation = ({ history, location: { pathname }, width }) => {
+  return (
+    <Wrapper style={{ width }}>
+      <ul>
+        <li>
+          <StyledLink to="/" title="Kalendern">
+            <i className="fas fa-calendar-alt"></i>
+          </StyledLink>
+        </li>
+        <li>
+          <StyledLink to="/news" title="MFF i media">
+            <i className="fas fa-newspaper"></i>
+          </StyledLink>
+        </li>
+        <li>
+          <StyledLink to="/table" title="Allsvenska tabellen">
+            <i className="fab fa-artstation"></i>
+          </StyledLink>
+        </li>
+        <li>
+          <StyledLink to="/podcasts" title="Relevanta podcasts">
+            <i className="fas fa-podcast"></i>
+          </StyledLink>
+        </li>
+        <li>
+          <StyledLink to="/twitter-feed" title="MFF's twitter-feed">
+            <i className="fab fa-twitter"></i>
+          </StyledLink>
+        </li>
+      </ul>
+    </Wrapper>
+  );
 };
 
 export default withRouter(Navigation);
