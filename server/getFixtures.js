@@ -12,7 +12,7 @@ const getFixtures = async (monthsAhead = 6) => {
     for (let i = 0; i < monthsAhead; i++) {
       const year = now.getFullYear().toString();
       const safeMonth = now.getMonth() + 1 + i;
-      const month = ((safeMonth > 12 ? safeMonth - 12 : safeMonth))
+      const month = (safeMonth > 12 ? safeMonth - 12 : safeMonth)
         .toString()
         .padStart(2, '0'); // Because fuck JavaScript, right?
 
@@ -22,17 +22,17 @@ const getFixtures = async (monthsAhead = 6) => {
         fixtures = await fetch(
           `https://www.mff.se/wp-json/mff/v1/match?page=1&posts_per_page=100&date=${year}${month}&year=${year}`
           // `http://localhost:3000/fake-data.json?page=1&posts_per_page=100&date=${year}${month}&year=${year}` // For debugging purposes
-        ).then(response => response.json());
+        ).then((response) => response.json());
       } catch (e) {
         console.error('COULD NO FETCH DATA! ', e);
         return null;
       }
 
       const mappedFixtures = fixtures
-        .filter(d => {
-            return new Date(d.meta['match-date-time']) > new Date();
+        .filter((d) => {
+          return new Date(d.meta['match-date-time']) > new Date();
         })
-        .map(d => ({
+        .map((d) => ({
           id: d.id,
           date: new Date(d.meta['match-date-time']),
           link: d.link,
@@ -41,7 +41,8 @@ const getFixtures = async (monthsAhead = 6) => {
           venue: d.meta['match-venue'],
           ticketUrl: d.meta['ticket-url'],
           opponent: d['opposing-team'],
-          gameType: d.type
+          gameType: d.type,
+          team: d.meta['team-men-women'] || 'men',
         }));
       data = [...data, ...mappedFixtures];
     }
