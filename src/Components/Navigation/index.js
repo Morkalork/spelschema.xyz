@@ -46,6 +46,10 @@ const StyledLink = styled(Link)`
     &:active {
       animation: spin 0.25s;
     }
+
+    &.selected {
+      color: #a7d7ff;
+    }
   }
 
   @keyframes spin {
@@ -59,32 +63,53 @@ const StyledLink = styled(Link)`
 `;
 
 const Navigation = ({ history, location: { pathname }, width }) => {
+  console.log(pathname);
   return (
     <Wrapper style={{ width }}>
       <ul>
         <li>
           <StyledLink to="/" title="Kalendern">
-            <i className="fas fa-calendar-alt"></i>
+            <i
+              className={`fas fa-calendar-alt ${
+                pathname === '/' ? 'selected' : ''
+              }`}
+            ></i>
           </StyledLink>
         </li>
         <li>
           <StyledLink to="/news" title="MFF i media">
-            <i className="fas fa-newspaper"></i>
+            <i
+              className={`fas fa-newspaper ${
+                pathname === '/news' ? 'selected' : ''
+              }`}
+            ></i>
           </StyledLink>
         </li>
         <li>
           <StyledLink to="/table" title="Allsvenska tabellen">
-            <i className="fab fa-artstation"></i>
+            <i
+              className={`fab fa-artstation ${
+                pathname === '/table' ? 'selected' : ''
+              }`}
+            ></i>
           </StyledLink>
         </li>
         <li>
           <StyledLink to="/podcasts" title="Relevanta podcasts">
-            <i className="fas fa-podcast"></i>
+            <i
+              className={`fas fa-podcast ${
+                pathname === '/podcasts' ? 'selected' : ''
+              }`}
+            ></i>
           </StyledLink>
         </li>
         <li>
           <StyledLink to="/twitter-feed" title="MFF's twitter-feed">
-            <i className="fab fa-twitter"></i>
+            <i
+              className={`fab fa-twitter ${
+                pathname === '/twitter-feed' ? 'selected' : ''
+              }`}
+            ></i>
           </StyledLink>
         </li>
       </ul>
