@@ -5,6 +5,7 @@ const getFixtures = require('./getFixtures');
 const getTable = require('./getTable');
 const port = process.env.PORT || 8080;
 const cors = require('cors');
+const getAllPods = require('./pods/get-all-pods');
 const app = express();
 
 app.use(cors());
@@ -30,10 +31,19 @@ app.get('/api/teams/table', (req, res) => {
     .catch(() => res.send(JSON.stringify([])));
 });
 
+app.get('/api/podcasts/:podCastType', (req, res) => {
+  getAllPods(req.params.podCastType)
+    .then((podCastData) => res.send(JSON.stringify(podCastData)))
+    .catch((e) => {
+      console.error(e);
+      res.send(JSON.stringify([]));
+    });
+});
+
 app.get('*', function (req, res) {
   res.sendFile(path.join(__dirname, '/../build/index.html'));
 });
 
 app.listen(port, function () {
-  console.log(`Spelschema.xyz Backend listening on port ${port}!`);
+  console.log(`mff-nytt.se backend listening on port ${port}!`);
 });

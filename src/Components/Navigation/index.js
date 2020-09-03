@@ -63,7 +63,6 @@ const StyledLink = styled(Link)`
 `;
 
 const Navigation = ({ history, location: { pathname }, width }) => {
-  console.log(pathname);
   return (
     <Wrapper style={{ width }}>
       <ul>

@@ -10,7 +10,7 @@
     "cors": "^2.8.5",
     "express": "^4.17.1",
     "isomorphic-fetch": "^2.2.1",
-    "moment": "^2.24.0",
+    "moment": "^2.27.0",
     "prop-types": "^15.7.2",
     "react": "^16.9.0",
     "react-dom": "^16.9.0",
@@ -21,7 +21,7 @@
     "react-twitter-embed": "^2.0.8",
     "request": "^2.88.0",
     "request-promise": "^4.2.4",
-    "rss-parser": "^3.7.2",
+    "rss-parser": "^3.9.0",
     "styled-components": "^4.3.2"
   },
   "nodemonConfig": {
@@ -34,7 +34,8 @@
     "server": "nodemon ./server",
     "client": "react-scripts start",
     "build": "npm i && react-scripts build",
-    "test": "react-scripts test"
+    "test": "react-scripts test",
+    "test-server": "jest ./server/**/*.spec.js"
   },
   "eslintConfig": {
     "extends": "react-app"

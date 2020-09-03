@@ -10,7 +10,6 @@ const ultraCacher = async (key, cacheTimeout, getData) => {
   if (!timeToUpdate) {
     const data = dataSet[key];
     if (data.length !== 0) {
-      console.log('Returning cached table data!');
       return data;
     }
   }

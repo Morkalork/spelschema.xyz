@@ -22,7 +22,7 @@ const getNews = () => {
         himmelriket(),
         aftonbladet(),
         fotbollskanalen(),
-        fotbolldirekt()
+        fotbolldirekt(),
       ])
         .then((result) => {
           lastCheck = now;
