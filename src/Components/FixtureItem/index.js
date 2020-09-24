@@ -44,7 +44,9 @@ const FixtureItem = ({
     </section>
     <section>
       <p>
-        <SmallSpan>{moment(date).format('YYYY-MM-DD HH:mm')}</SmallSpan>
+        <SmallSpan>
+          {moment(date.toLocaleString('sv-SE')).format('YYYY-MM-DD HH:mm')}
+        </SmallSpan>
         {venue && <SmallSpan>, {venue}</SmallSpan>}
       </p>
       <p>

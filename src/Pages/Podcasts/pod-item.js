@@ -47,7 +47,7 @@ export const PodItem = ({ pod }) => {
   const toggleShowAll = () => setShowAll(!showAll);
   return (
     <Wrapper>
-      <Link href={pod.link}>
+      <Link href={pod.link} target="_blank">
         <Title>
           <TitleText title={`${pod.podName} - ${pod.title}`}>
             <strong>{pod.podName}</strong> - {pod.title}
