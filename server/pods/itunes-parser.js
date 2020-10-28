@@ -20,7 +20,7 @@ module.exports = async (url) => {
     const badLink = Object.keys(badLinks).find(
       (key) => key === feed.title.trim()
     );
-    return badLink ? badLinks[badLink] : item.link;
+    return badLink ? badLinks[badLink] : item.link || feed.link;
   };
   return items
     .filter(
