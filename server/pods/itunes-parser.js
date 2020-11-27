@@ -3,7 +3,7 @@ const RssParser = require('rss-parser');
 const forbiddenTitleWords = ['HIF-podd'];
 const badLinks = {
   'Blått Snack': 'https://poddtoppen.se/podcast/1085802878/blatt-snack',
-  'Allsvenska Podden': 'https://podcast.aftonbladet.se/p/allsvenska-podden/',
+  'Allsvenska Podden': 'https://poddtoppen.se/podcast/1095805585/allsvenska-podden',
   Frustrationspodden:
     'https://poddtoppen.se/podcast/1516464835/frustrationspodden',
 };
