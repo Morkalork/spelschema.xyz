@@ -21,7 +21,7 @@
     "react-twitter-embed": "^2.0.8",
     "request": "^2.88.0",
     "request-promise": "^4.2.4",
-    "rss-parser": "^3.9.0",
+    "rss-parser": "^3.13.0",
     "styled-components": "^4.3.2"
   },
   "nodemonConfig": {
